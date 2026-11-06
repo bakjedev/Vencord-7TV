@@ -1,0 +1,308 @@
+.vc-7tv-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: min(480px, 62vh);
+    min-height: 280px;
+    color: var(--text-default, var(--text-normal));
+    font-family: var(--font-primary);
+}
+
+.vc-7tv-search {
+    box-sizing: border-box;
+    flex: none;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--input-border-default, transparent);
+    border-radius: var(--radius-sm, 8px);
+    background: var(--input-background-default, var(--input-background));
+    color: var(--text-default, var(--text-normal));
+    font: inherit;
+    font-size: 16px;
+    outline: none;
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    &:focus-visible {
+        border-color: var(--border-focus, #00b0f4);
+    }
+}
+
+.vc-7tv-bar {
+    display: flex;
+    flex: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 32px;
+}
+
+.vc-7tv-tabs,
+.vc-7tv-sorts {
+    display: flex;
+    gap: 2px;
+}
+
+.vc-7tv-tabs {
+    padding: 2px;
+    border-radius: var(--radius-sm, 8px);
+    background: var(--background-mod-subtle, var(--background-modifier-hover));
+}
+
+.vc-7tv-tab,
+.vc-7tv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: none;
+    border-radius: calc(var(--radius-sm, 8px) - 2px);
+    background: none;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--text-default, var(--text-normal));
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--border-focus, #00b0f4);
+        outline-offset: 1px;
+    }
+}
+
+.vc-7tv-tab[aria-selected="true"] {
+    background: var(--background-mod-strong, var(--background-modifier-selected));
+    color: var(--text-strong, var(--header-primary));
+}
+
+.vc-7tv-chip[aria-checked="true"] {
+    background: var(--background-mod-normal, var(--background-modifier-active));
+    color: var(--text-strong, var(--header-primary));
+}
+
+.vc-7tv-count {
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+}
+
+.vc-7tv-notice {
+    flex: none;
+    margin: 0;
+    padding: 8px 12px;
+    border-left: 3px solid var(--status-warning, #f0b232);
+    border-radius: var(--radius-xs, 4px);
+    background: var(--background-mod-subtle, var(--background-modifier-hover));
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.vc-7tv-scroller {
+    flex: 1;
+    min-height: 0;
+    margin: 0 -4px;
+    padding: 0 4px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+}
+
+.vc-7tv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 4px;
+    transition: opacity 0.12s ease-out;
+}
+
+.vc-7tv-grid-stale {
+    opacity: 0.5;
+}
+
+.vc-7tv-cell {
+    position: relative;
+    min-width: 0;
+}
+
+.vc-7tv-emote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 4px 6px;
+    border: none;
+    border-radius: var(--radius-sm, 8px);
+    background: none;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--background-mod-subtle, var(--background-modifier-hover));
+    }
+
+    &:active {
+        background: var(--background-mod-normal, var(--background-modifier-active));
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--border-focus, #00b0f4);
+        outline-offset: -2px;
+    }
+}
+
+.vc-7tv-img {
+    width: 100%;
+    height: 48px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.vc-7tv-name {
+    max-width: 100%;
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.vc-7tv-star {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--background-base-lower, var(--background-secondary));
+    color: var(--interactive-icon-default, var(--interactive-normal));
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.1s;
+
+    & svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentcolor;
+        stroke-width: 2;
+        stroke-linejoin: round;
+    }
+
+    &:hover {
+        color: var(--interactive-icon-hover, var(--interactive-hover));
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--border-focus, #00b0f4);
+    }
+}
+
+.vc-7tv-star-on {
+    color: var(--status-warning, #f0b232);
+    opacity: 1;
+
+    & svg {
+        fill: currentcolor;
+    }
+
+    &:hover {
+        color: var(--status-warning, #f0b232);
+    }
+}
+
+/* Everything on the Favorites tab is starred, so only show stars on hover there */
+.vc-7tv-grid-favs .vc-7tv-star-on {
+    opacity: 0;
+}
+
+.vc-7tv-cell:hover .vc-7tv-star,
+.vc-7tv-cell:focus-within .vc-7tv-star {
+    opacity: 1;
+}
+
+.vc-7tv-pop svg {
+    animation: vc-7tv-pop 0.3s ease-out;
+}
+
+@keyframes vc-7tv-pop {
+    0% { transform: scale(0.6); }
+    60% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+.vc-7tv-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 16px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+
+    & p {
+        margin: 0;
+    }
+}
+
+.vc-7tv-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 12px;
+    color: var(--text-muted);
+    font-size: 12px;
+    text-align: center;
+
+    & p {
+        margin: 0;
+    }
+}
+
+.vc-7tv-error {
+    color: var(--text-feedback-critical, var(--text-danger));
+}
+
+.vc-7tv-hint {
+    flex: none;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vc-7tv-pop svg {
+        animation: none;
+    }
+
+    .vc-7tv-grid,
+    .vc-7tv-star {
+        transition: none;
+    }
+}
+
+.reduce-motion .vc-7tv-pop svg {
+    animation: none;
+}
